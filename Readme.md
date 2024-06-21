@@ -22,7 +22,7 @@ Implement a video processing pipeline to convert colored videos to grayscale aut
 1. **Upload File to S3**: Trigger the pipeline when a file is uploaded to an S3 bucket.
 2. **Lambda Function**: Detects the file upload and triggers an ECS task.
 3. **ECS Task**: Uses a Docker container to process the video.
-4. **Process Video**: Convert the video from RGB to grayscale using a Python script inside the Docker container.
+4. **Process Video**: Write your own processing method (Here implemented -> motion detection in region of interest)
 5. **Store Output**: Upload the processed video back to S3.
 
 ## Technologies and Services
