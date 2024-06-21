@@ -1,4 +1,4 @@
-# Automated and Scalable Video Processing Using AWS ECS, Fargate, Lambda, and S3
+# Scalable Video Processing Using AWS ECS, Fargate, Lambda, and S3
 
 ## Introduction
 
