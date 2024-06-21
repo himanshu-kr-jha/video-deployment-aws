@@ -101,3 +101,5 @@ Implement a video processing pipeline to convert colored videos to grayscale aut
 ## Resources
 
 - **[AWS CLI Installation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)**: Instructions for different operating systems.
+
+## Author - Himanshu Kumar Jha
