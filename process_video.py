@@ -50,6 +50,7 @@ def movement_detection(input_video_path,output_video_path):
 @click.command(name='process_video')
 @click.option("--input_bucket", type=str, required=True, help="path to the input S3 bucket")
 @click.option("--input_filepath", type=str, required=True, help="path to the input movie file")
+@click.option("--output_bucket", type=str, required=True, help="path to the output s3 bucket")
 @click.option("--output_filepath", type=str, required=True, help="path to the output movie file")
 def cli(input_bucket, input_filepath, output_bucket, output_filepath):
 # determine input and output file basenames input_file_basename = os.path.basename(input_filepath)
