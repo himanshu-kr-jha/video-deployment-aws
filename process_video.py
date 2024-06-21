@@ -55,10 +55,13 @@ def cli(input_bucket, input_filepath, output_bucket, output_filepath):
 # determine input and output file basenames input_file_basename = os.path.basename(input_filepath)
     input_file_basename=os.path.basename(input_filepath)
     output_file_basename = os.path.basename(output_filepath)
+
 # download video file from S3
     s3=boto3.client('s3')
     s3.download_file(input_bucket, input_filepath, input_file_basename)
-# process video file convert_rgb_movie_to_grayscale(input_file_basename, output_file_basename)
-# upload processed video file to S3 s3.upload_file(output_file_basename, output_bucket, output_filepath)
-if _name_ == "__main__":
+    # process video file 
+    movement_detection(input_file_basename, output_file_basename)
+    # upload processed video file to S3 
+    s3.upload_file(output_file_basename, output_bucket, output_filepath)
+if __name__== "__main__":
     cli()
