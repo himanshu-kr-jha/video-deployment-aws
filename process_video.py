@@ -16,10 +16,10 @@ def bg_movement(frame,threshold, kernel, object_detector, roi_x, roi_y, roi_heig
     counter+=1
     if movement > threshold:
         print("Frame-{} : moved".format(counter))
-        return "moved"
+        return 1
     else:
         print("Frame - {}: not moved".format(counter))
-        return "Not moved"
+        return 0
     
 def movement_detection(input_video_path,output_video_path):
     cap =cv2.VideoCapture(input_video_path)
@@ -31,13 +31,15 @@ def movement_detection(input_video_path,output_video_path):
     roi_width = 500
     roi_height = frame_height - roi_y
 
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    fourcc = cv2.VideoWriter_fourcc(*'MP4V')
     object_detector = cv2.createBackgroundSubtractorMOG2()
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-    video_writer = cv2.VideoWriter(output_video_path, fourcc, 20.0, (frame_width, frame_height))
+    video_writer = cv2.VideoWriter(output_video_path, fourcc,int(cap.get(cv2.CAP_PROP_FPS)), (frame_width, frame_height),False)
 
     for frame_index in range(num_frames):
         ret,frame=cap.read()
+        if not ret:
+            break
         movement = bg_movement(frame, 8000, kernel, object_detector, roi_x, roi_y, roi_height, roi_width)
         text_x = frame_width - 200
         frame=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
