@@ -4,8 +4,11 @@ COPY process_video.py .
 COPY requirements.txt .
 
 RUN apt-get update \
-    && apt-get install ffmpeg -y \
+    && apt-get -y upgrade \
+    && apt-get install -y ffmpeg \
+    && pip install --upgrade pip \
     && pip install -r requirements.txt
+
 ENTRYPOINT python process_video.py \
     --input_bucket=${INPUT_BUCKET} \
     --input_filepath=${INPUT_FILEPATH} \
